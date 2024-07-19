@@ -1,0 +1,43 @@
+package org.example;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
+import com.mongodb.client.FindIterable;
+
+public class buscar {
+    public JPanel buscar;
+    private JButton buscarB;
+
+    public buscar() {
+        buscarB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
+
+                    MongoDatabase database = mongoClient.getDatabase("miBaseDeDatos");
+                    MongoCollection<Document> collection = database.getCollection("miColeccion");
+
+                    FindIterable<Document> documentos = collection.find();
+
+                    for (Document documento : documentos) {
+                        //System.out.println(documento.toJson());
+                        String nombre = documento.getString("nombre");
+                        String apellido = documento.getString("apellido");
+                        int edad = documento.getInteger("edad");
+
+                        System.out.println("Nombre: " + nombre);
+                        System.out.println("Apellido: " + apellido);
+                        System.out.println("Edad: " + edad);
+                    }
+                }
+            }
+        });
+    }
+}

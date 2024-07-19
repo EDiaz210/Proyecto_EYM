@@ -40,14 +40,17 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="ad9be" class="javax.swing.JLabel">
+          <grid id="2ad2a" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="     Empresa Lyxuz XCORP"/>
+              <enabled value="true"/>
             </properties>
-          </component>
+            <border type="none" title=""/>
+            <children/>
+          </grid>
         </children>
       </grid>
       <grid id="eaff" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -74,12 +77,12 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="84c90" class="javax.swing.JButton" binding="button2" default-binding="true">
+                  <component id="6b48b" class="javax.swing.JButton" binding="insertar">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Button"/>
+                      <text value="Insertar"/>
                     </properties>
                   </component>
                 </children>
@@ -120,12 +123,12 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="6b48b" class="javax.swing.JButton" binding="button1" default-binding="true">
+                  <component id="84c90" class="javax.swing.JButton" binding="buscar">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <text value="Button"/>
+                      <text value="Buscar"/>
                     </properties>
                   </component>
                 </children>
@@ -160,7 +163,7 @@
           <text value="CerrarSesion"/>
         </properties>
       </component>
-      <grid id="2e83" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="2e83" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -174,6 +177,14 @@
             </constraints>
             <properties>
               <text value="     Atentamente,"/>
+            </properties>
+          </component>
+          <component id="ad9be" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="     Empresa Lyxuz XCORP"/>
             </properties>
           </component>
         </children>

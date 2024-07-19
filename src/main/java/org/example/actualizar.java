@@ -1,54 +1,56 @@
 package org.example;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.result.UpdateResult;
+import com.mongodb.client.result.DeleteResult;
 
 public class actualizar {
     public JPanel actualizar;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JButton actualizarB;
 
 
-    String URL = "jdbc:mysql://localhost:3306/estudiantes2024A";
-    String USER = "root";
-    String PASSWORD = "123456";
+    String url = "jdbc:mysql://localhost:3306/estudiantes2024A";
+    String user = "root";
+    String password = "123456";
     Connection con = null;
     PreparedStatement ps = null;
 
+    public actualizar() {
 
-
-    try {
-            //establecer la conexion
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
-            //prepara la sentencia sql
-            String sql = "UPDATE estudiantes SET b1=? WHERE cedula=?";
-            ps = con.prepareStatement(sql);
-            //seteamos lso valores de la sentencia previa
-            ps.setInt(1, 100);
-            ps.setString(2, "1726195207");
-            System.out.println(sql);
-            int n = ps.executeUpdate();
-            System.out.println("se modificaron:" + n + "lineas");
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            //cerramos la conexion
-            try {
-                if (ps != null) {
-                    ps.close();
+        actualizarB.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
+                    MongoDatabase database = mongoClient.getDatabase("miBaseDeDatos");
+                    MongoCollection<Document> collection = database.getCollection("miColeccion");
+                    Document filtro = new Document("nombre", "Yadira");
+                    Document actualizacion = new Document("$set", new Document("apellido", "Gómez"));
+                    UpdateResult resultado = collection.updateOne(filtro, actualizacion);
+                    System.out.println("Documentos modificados: " + resultado.getModifiedCount());
                 }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
             }
-        }
+        });
     }
+}
 
 
 
 
-//oaaa
+
+
+
+
 
 
 
