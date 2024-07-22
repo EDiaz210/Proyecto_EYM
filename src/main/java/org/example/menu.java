@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,7 +20,8 @@ public class menu {
                 JFrame fs = new JFrame();
                 fs.setContentPane(new actualizar().actualizar);
                 fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                fs.setTitle("Actualizacion");
+                fs.setTitle("Actualización");
+                fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                 fs.setSize(600,300);
                 fs.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(actualizar)).dispose();
@@ -31,7 +33,8 @@ public class menu {
                 JFrame fs = new JFrame();
                 fs.setContentPane(new eliminar().eliminar);
                 fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                fs.setTitle("Actualizacion");
+                fs.setTitle("Eliminación");
+                fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                 fs.setSize(600,300);
                 fs.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(eliminar)).dispose();
@@ -44,7 +47,8 @@ public class menu {
                 JFrame fs = new JFrame();
                 fs.setContentPane(new buscar().buscar);
                 fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                fs.setTitle("Actualizacion");
+                fs.setTitle("Búsqueda");
+                fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                 fs.setSize(600,300);
                 fs.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(insertar)).dispose();
@@ -57,7 +61,8 @@ public class menu {
                 JFrame fs = new JFrame();
                 fs.setContentPane(new insertar().insertar);
                 fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                fs.setTitle("Actualizacion");
+                fs.setTitle("Insercción");
+                fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                 fs.setSize(600,300);
                 fs.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(insertar)).dispose();
