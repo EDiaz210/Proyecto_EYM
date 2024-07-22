@@ -15,7 +15,7 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
     JFrame frame = new JFrame();
-    frame.setContentPane(new menu().menu);
+    frame.setContentPane(new login().login);
     frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
     frame.setTitle("Actualizacion");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
