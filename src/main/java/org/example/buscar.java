@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +15,8 @@ import com.mongodb.client.FindIterable;
 public class buscar {
     public JPanel buscar;
     private JButton buscarB;
+    private JTextField codigoT;
+    private JButton volver;
 
     public buscar() {
         buscarB.addActionListener(new ActionListener() {
@@ -37,6 +40,19 @@ public class buscar {
                         System.out.println("Edad: " + edad);
                     }
                 }
+            }
+        });
+        volver.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame();
+                frame.setContentPane(new menu().menu);
+                frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
+                frame.setTitle("Login");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(600, 300);
+                frame.setVisible(true);
+                ((JFrame)SwingUtilities.getWindowAncestor(volver)).dispose();
             }
         });
     }

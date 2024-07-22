@@ -8,13 +8,15 @@ import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import com.mongodb.client.result.DeleteResult;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class eliminar {
     public JPanel eliminar;
     private JButton eliminarB;
-
+    private JTextField textField1;
+    private JButton volverButton;
 
 
     public eliminar() {
@@ -30,6 +32,19 @@ public class eliminar {
                     DeleteResult resultado = collection.deleteOne(filtro);
                     System.out.println("Documentos borrados: " + resultado.getDeletedCount());
                 }
+            }
+        });
+        volverButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame();
+                frame.setContentPane(new menu().menu);
+                frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
+                frame.setTitle("Login");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(600, 300);
+                frame.setVisible(true);
+                ((JFrame) SwingUtilities.getWindowAncestor(volverButton)).dispose();
             }
         });
     }

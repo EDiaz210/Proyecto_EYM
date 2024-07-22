@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -9,22 +10,14 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.result.UpdateResult;
-import com.mongodb.client.result.DeleteResult;
 
 public class actualizar {
     public JPanel actualizar;
     private JTextField textField1;
-    private JTextField textField2;
+    private JButton VolverT;
     private JButton actualizarB;
 
-
-    String url = "jdbc:mysql://localhost:3306/estudiantes2024A";
-    String user = "root";
-    String password = "123456";
-    Connection con = null;
-    PreparedStatement ps = null;
 
     public actualizar() {
 
@@ -39,6 +32,19 @@ public class actualizar {
                     UpdateResult resultado = collection.updateOne(filtro, actualizacion);
                     System.out.println("Documentos modificados: " + resultado.getModifiedCount());
                 }
+            }
+        });
+        VolverT.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame();
+                frame.setContentPane(new menu().menu);
+                frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
+                frame.setTitle("Login");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(600, 300);
+                frame.setVisible(true);
+                ((JFrame)SwingUtilities.getWindowAncestor(VolverT)).dispose();
             }
         });
     }
