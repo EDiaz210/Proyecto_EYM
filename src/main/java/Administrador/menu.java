@@ -13,7 +13,7 @@ public class menu {
     private JButton insertar;
     private JButton buscar;
     private JButton eliminar;
-    private JButton actualizar;
+
 
     public menu() {
 

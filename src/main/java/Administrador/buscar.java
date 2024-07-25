@@ -26,9 +26,8 @@ public class buscar {
             public void actionPerformed(ActionEvent e) {
                 try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
 
-                    MongoDatabase database = mongoClient.getDatabase("miBaseDeDatos");
-                    MongoCollection<Document> collection = database.getCollection("miColeccion");
-
+                    MongoDatabase database = mongoClient.getDatabase("LxxuzOXCORP");
+                    MongoCollection<Document> collection = database.getCollection("Tareas");
                     FindIterable<Document> documentos = collection.find();
 
                     for (Document documento : documentos) {
