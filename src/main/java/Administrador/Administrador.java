@@ -1,4 +1,4 @@
-package org.example;
+package Administrador;
 
 public class Administrador {
 }

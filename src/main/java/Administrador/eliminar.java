@@ -1,43 +1,41 @@
-package org.example;
+package Administrador;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
+import com.mongodb.client.result.DeleteResult;
 
-public class insertar {
-    public JPanel insertar;
-    private JButton insertarB;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class eliminar {
+    public JPanel eliminar;
+    private JButton eliminarB;
+    private JTextField buscarElimin;
     private JButton volverButton;
+    private JLabel iconM;
+    private JProgressBar progressBar1;
 
 
-    public insertar() {
-        insertarB.addActionListener(new ActionListener() {
+    public eliminar() {
+        eliminarB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
+
                     MongoDatabase database = mongoClient.getDatabase("miBaseDeDatos");
                     MongoCollection<Document> collection = database.getCollection("miColeccion");
-                    Document documento = new Document("nombre", "Juan")
-                            .append("apellido", "Zaldumbide")
-                            .append("edad", 31);
-                    collection.insertOne(documento);
-                    System.out.println("Documento insertado con éxito");
+                    Document filtro = new Document("nombre", "Juan");
+                    DeleteResult resultado = collection.deleteOne(filtro);
+                    System.out.println("Documentos borrados: " + resultado.getDeletedCount());
                 }
             }
         });
-
-
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,8 +46,12 @@ public class insertar {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setSize(600, 300);
                 frame.setVisible(true);
-                ((JFrame)SwingUtilities.getWindowAncestor(volverButton)).dispose();
+                ((JFrame) SwingUtilities.getWindowAncestor(volverButton)).dispose();
             }
         });
     }
 }
+
+
+
+

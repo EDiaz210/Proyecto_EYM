@@ -1,40 +1,45 @@
-package org.example;
+package Administrador;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
+
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
-import com.mongodb.client.result.UpdateResult;
 
-public class actualizar {
-    public JPanel actualizar;
+public class insertar {
+    public JPanel insertar;
+    private JButton insertarB;
     private JTextField textField1;
-    private JButton VolverT;
-    private JButton actualizarB;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JTextField textField5;
+    private JButton volverButton;
 
 
-    public actualizar() {
-
-        actualizarB.addActionListener(new ActionListener() {
+    public insertar() {
+        insertarB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
-                    MongoDatabase database = mongoClient.getDatabase("miBaseDeDatos");
-                    MongoCollection<Document> collection = database.getCollection("miColeccion");
-                    Document filtro = new Document("nombre", "Yadira");
-                    Document actualizacion = new Document("$set", new Document("apellido", "Gómez"));
-                    UpdateResult resultado = collection.updateOne(filtro, actualizacion);
-                    System.out.println("Documentos modificados: " + resultado.getModifiedCount());
+                    MongoDatabase database = mongoClient.getDatabase("LyxuzOXCORP");
+                    MongoCollection<Document> collection = database.getCollection("Tareas");
+                    Document documento = new Document("nombre", "Juan")
+                            .append("apellido", "Zaldumbide")
+                            .append("edad", 31);
+                    collection.insertOne(documento);
+                    System.out.println("Documento insertado con éxito");
                 }
             }
         });
-        VolverT.addActionListener(new ActionListener() {
+
+
+        volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame();
@@ -44,24 +49,8 @@ public class actualizar {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setSize(600, 300);
                 frame.setVisible(true);
-                ((JFrame)SwingUtilities.getWindowAncestor(VolverT)).dispose();
+                ((JFrame) SwingUtilities.getWindowAncestor(volverButton)).dispose();
             }
         });
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

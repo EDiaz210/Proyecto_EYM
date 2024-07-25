@@ -1,4 +1,4 @@
-package org.example;
+package Administrador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,8 +17,8 @@ public class buscar {
     private JButton buscarB;
     private JTextField codigoT;
     private JButton volver;
-    private JProgressBar progressBar1;
     private JLabel iconM;
+    private JProgressBar progressBar1;
 
     public buscar() {
         buscarB.addActionListener(new ActionListener() {

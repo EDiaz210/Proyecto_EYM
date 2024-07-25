@@ -1,4 +1,6 @@
-package org.example;
+package Administrador;
+
+import org.example.login;
 
 import javax.swing.*;
 import java.awt.*;
@@ -68,20 +70,6 @@ public class menu {
                 frame.setSize(600, 350);
                 frame.setVisible(true);
                 ((JFrame)SwingUtilities.getWindowAncestor(CerrarSesion)).dispose();
-            }
-        });
-        actualizar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame fs = new JFrame();
-                fs.setContentPane(new actualizar().actualizar);
-                fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                fs.setTitle("Actualización");
-                fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
-                fs.setSize(600,350);
-                fs.setVisible(true);
-                ((JFrame) SwingUtilities.getWindowAncestor(actualizar)).dispose();
-
             }
         });
     }
