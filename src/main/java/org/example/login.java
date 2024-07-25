@@ -54,6 +54,8 @@ public class login {
                                         frame.setSize(600, 300);
                                         frame.setVisible(true);
                                         ((JFrame)SwingUtilities.getWindowAncestor(iniciarSesion)).dispose();
+                                    }else{
+                                        System.out.println("Credenciales no validas");
                                     }
                                 }
                             }
@@ -87,14 +89,14 @@ public class login {
                                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                                         frame.setSize(600, 300);
                                         frame.setVisible(true);
-                                        ((JFrame)SwingUtilities.getWindowAncestor(iniciarSesion)).dispose();
+                                        ((JFrame) SwingUtilities.getWindowAncestor(iniciarSesion)).dispose();
+                                    }else{
+                                    System.out.println("Credenciales no validas");
                                     }
                                 }
                             }
                         }
                     });
-                }else{
-                    System.out.println("Credenciales no validas");
                 }
             }
         });
