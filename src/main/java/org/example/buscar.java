@@ -17,6 +17,8 @@ public class buscar {
     private JButton buscarB;
     private JTextField codigoT;
     private JButton volver;
+    private JProgressBar progressBar1;
+    private JLabel iconM;
 
     public buscar() {
         buscarB.addActionListener(new ActionListener() {
