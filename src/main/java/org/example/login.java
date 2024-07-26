@@ -2,6 +2,7 @@ package org.example;
 
 import Administrador.Administrador;
 import Administrador.menu;
+import Desarrollador.Desarrolladores;
 import Desarrollador.menuD;
 import com.mongodb.client.*;
 import org.bson.Document;
@@ -72,16 +73,16 @@ public class login {
 
                             try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
                                 MongoDatabase database = mongoClient.getDatabase("LxxuzOXCORP");
-                                MongoCollection<Document> collection = database.getCollection("Desarrollador");
+                                MongoCollection<Document> collection = database.getCollection("Desarrolladores");
                                 FindIterable<Document> documentos = collection.find();
 
                                 for (Document documento : documentos) {
 
-                                    Administrador ad1 = new Administrador();
-                                    ad1.setCorreo(documento.getString("correo"));
-                                    ad1.setContraseña(documento.getString("contraseña"));
+                                    Desarrolladores de1 = new Desarrolladores();
+                                    de1.setCorreo(documento.getString("correo"));
+                                    de1.setContraseña(documento.getString("contraseña"));
 
-                                    if (correo.getText().equals(ad1.getCorreo()) && contra.getText().equals(ad1.getContraseña())) {
+                                    if (de1.getCorreo().equals(correo.getText()) && de1.getContraseña().equals(contra.getText())) {
                                         JFrame frame = new JFrame();
                                         frame.setContentPane(new menuD().menuD);
                                         frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
@@ -90,6 +91,7 @@ public class login {
                                         frame.setSize(600, 300);
                                         frame.setVisible(true);
                                         ((JFrame) SwingUtilities.getWindowAncestor(iniciarSesion)).dispose();
+
                                     }else{
                                     System.out.println("Credenciales no validas");
                                     }

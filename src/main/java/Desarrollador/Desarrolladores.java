@@ -7,16 +7,18 @@ public class Desarrolladores {
     String correo;
     int edad;
     String tipo;
+    String contraseña;
 
     public Desarrolladores() {}
 
-    public Desarrolladores(String nombre, String cedula, String telefono, String correo, int edad, String tipo) {
+    public Desarrolladores(String nombre, String cedula, String telefono, String correo, int edad, String tipo, String contraseña) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.telefono = telefono;
         this.correo = correo;
         this.edad = edad;
         this.tipo = tipo;
+        this.contraseña = contraseña;
     }
 
 
@@ -66,5 +68,13 @@ public class Desarrolladores {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 }

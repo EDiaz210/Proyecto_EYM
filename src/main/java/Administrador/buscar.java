@@ -11,6 +11,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import com.mongodb.client.FindIterable;
+import org.example.Tareas;
 
 public class buscar {
     public JPanel buscar;
@@ -18,7 +19,13 @@ public class buscar {
     private JTextField codigoT;
     private JButton volver;
     private JLabel iconM;
-    private JProgressBar progressBar1;
+    private JProgressBar avanceB;
+    private JLabel nombre;
+    private JLabel id;
+    private JLabel desarrollador;
+    private JLabel desc;
+    private JLabel fecha_V;
+    private JLabel fecha_A;
 
     public buscar() {
         buscarB.addActionListener(new ActionListener() {
@@ -26,19 +33,44 @@ public class buscar {
             public void actionPerformed(ActionEvent e) {
                 try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
 
-                    MongoDatabase database = mongoClient.getDatabase("LxxuzOXCORP");
+                    MongoDatabase database = mongoClient.getDatabase("LyxuzOXCORP");
                     MongoCollection<Document> collection = database.getCollection("Tareas");
                     FindIterable<Document> documentos = collection.find();
 
                     for (Document documento : documentos) {
-                        //System.out.println(documento.toJson());
-                        String nombre = documento.getString("nombre");
-                        String apellido = documento.getString("apellido");
-                        int edad = documento.getInteger("edad");
 
-                        System.out.println("Nombre: " + nombre);
-                        System.out.println("Apellido: " + apellido);
-                        System.out.println("Edad: " + edad);
+                        Tareas t1 = new Tareas();
+                        t1.setId_tarea(documento.getString("id_tarea"));
+                        t1.setNombre(documento.getString("nombre"));
+                        t1.setDescripcion(documento.getString("descripcion"));
+                        t1.setImagen(documento.getString("imagen"));
+                        t1.setNombreEncargado(documento.getString("encargado"));
+                        t1.setAvance(documento.getDouble("avance"));
+                        t1.setFechaAsignacion(documento.getString("fechaAsignacion"));
+                        t1.setFechaVencimiento(documento.getString("fechaVencimiento"));
+
+
+                        if (t1.getId_tarea().equals(codigoT.getText())){
+                            nombre.setText(t1.getNombre());
+                            avanceB.setString(Double.toString(t1.getAvance()));
+                            avanceB.setValue((int) t1.getAvance());
+                            avanceB.setStringPainted(true);
+                            id.setText(t1.getId_tarea());
+                            desarrollador.setText(t1.getNombreEncargado());
+                            desc.setText(t1.getDescripcion());
+                            fecha_A.setText(t1.getFechaAsignacion());
+                            fecha_V.setText(t1.getFechaVencimiento());
+
+
+                        }else {
+                            System.out.println("No existe esa tarea");
+                        }
+
+
+
+
+
+
                     }
                 }
             }

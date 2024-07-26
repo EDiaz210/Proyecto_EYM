@@ -6,18 +6,22 @@ public class Tareas {
     String descripcion;
     String imagen;
     String NombreEncargado;
-    int avance;
+    double avance;
+    String fechaAsignacion;
+    String fechaVencimiento;
 
     public Tareas() {
     }
 
-    public Tareas(String id_tarea, String nombre, String descripcion, String imagen, String nombreEncargado, int avance) {
+    public Tareas(String id_tarea, String nombre, String descripcion, String imagen, String nombreEncargado, double avance, String fechaAsignacion, String fechaVencimiento) {
         this.id_tarea = id_tarea;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagen = imagen;
-        NombreEncargado = nombreEncargado;
+        this.NombreEncargado = nombreEncargado;
         this.avance = avance;
+        this.fechaAsignacion = fechaAsignacion;
+        this.fechaVencimiento = fechaVencimiento;
     }
 
     public String getId_tarea() {
@@ -60,11 +64,27 @@ public class Tareas {
         NombreEncargado = nombreEncargado;
     }
 
-    public int getAvance() {
+    public double getAvance() {
         return avance;
     }
 
-    public void setAvance(int avance) {
+    public void setAvance(double avance) {
         this.avance = avance;
+    }
+
+    public String getFechaAsignacion() {
+        return fechaAsignacion;
+    }
+
+    public void setFechaAsignacion(String fechaAsignacion) {
+        this.fechaAsignacion = fechaAsignacion;
+    }
+
+    public String getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(String fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
     }
 }

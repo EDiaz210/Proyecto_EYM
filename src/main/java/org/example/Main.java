@@ -1,6 +1,6 @@
 package org.example;
 import javax.swing.*;
-
+import Administrador.menu;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
@@ -15,7 +15,7 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
     JFrame frame = new JFrame();
-    frame.setContentPane(new login().login);
+    frame.setContentPane(new menu().menu);
     frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
     frame.setTitle("Login");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

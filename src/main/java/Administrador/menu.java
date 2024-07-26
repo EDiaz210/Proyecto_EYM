@@ -53,7 +53,7 @@ public class menu {
                 fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 fs.setTitle("Insercción");
                 fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
-                fs.setSize(600,350);
+                fs.setSize(600,550);
                 fs.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(insertar)).dispose(); 
 

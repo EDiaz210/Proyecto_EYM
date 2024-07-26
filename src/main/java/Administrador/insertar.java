@@ -10,16 +10,20 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
+import org.example.Tareas;
 
 public class insertar {
     public JPanel insertar;
     private JButton insertarB;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
+    private JTextField nombre_Ins;
+    private JTextField des_Ins;
+    private JTextField desc_Ins;
+    private JTextField fecha_Ve_Ins;
     private JButton volverButton;
+    private JTextField fecha_A_Ins;
+    private JTextField id_Ins;
+    private JTextField avance_Ins;
+    private JLabel resultado_Ins;
 
 
     public insertar() {
@@ -29,11 +33,25 @@ public class insertar {
                 try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
                     MongoDatabase database = mongoClient.getDatabase("LyxuzOXCORP");
                     MongoCollection<Document> collection = database.getCollection("Tareas");
-                    Document documento = new Document("nombre", "Juan")
-                            .append("apellido", "Zaldumbide")
-                            .append("edad", 31);
+
+                    Tareas t1 = new Tareas();
+                    t1.setId_tarea(id_Ins.getText());
+                    t1.setNombre(nombre_Ins.getText());
+                    t1.setNombreEncargado(des_Ins.getText());
+                    t1.setDescripcion(desc_Ins.getText());
+                    t1.setAvance(Double.parseDouble(avance_Ins.getText()));
+                    t1.setFechaAsignacion(fecha_A_Ins.getText());
+                    t1.setFechaVencimiento(fecha_Ve_Ins.getText());
+
+                    Document documento = new Document("id_tarea", t1.getId_tarea())
+                            .append("nombre", t1.getNombre())
+                            .append("encargado", t1.getNombreEncargado())
+                            .append("descripcion", t1.getDescripcion())
+                            .append("avance", t1.getAvance())
+                            .append("fechaAsignacion", t1.getFechaAsignacion())
+                            .append("fechaVencimiento", t1.getFechaVencimiento());
                     collection.insertOne(documento);
-                    System.out.println("Documento insertado con éxito");
+                    resultado_Ins.setText("Datos insertados correctamente");
                 }
             }
         });
@@ -54,3 +72,12 @@ public class insertar {
         });
     }
 }
+
+
+
+
+
+
+
+
+
