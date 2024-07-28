@@ -26,6 +26,7 @@ public class buscar {
     private JLabel desc;
     private JLabel fecha_V;
     private JLabel fecha_A;
+    private JLabel resultado_txt;
 
     public buscar() {
         buscarB.addActionListener(new ActionListener() {
@@ -63,7 +64,7 @@ public class buscar {
 
 
                         }else {
-                            System.out.println("No existe esa tarea");
+                            resultado_txt.setText("No existe esa tarea");
                         }
 
 

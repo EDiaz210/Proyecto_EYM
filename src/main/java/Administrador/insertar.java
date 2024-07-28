@@ -22,7 +22,6 @@ public class insertar {
     private JButton volverButton;
     private JTextField fecha_A_Ins;
     private JTextField id_Ins;
-    private JTextField avance_Ins;
     private JLabel resultado_Ins;
 
 
@@ -39,7 +38,6 @@ public class insertar {
                     t1.setNombre(nombre_Ins.getText());
                     t1.setNombreEncargado(des_Ins.getText());
                     t1.setDescripcion(desc_Ins.getText());
-                    t1.setAvance(Double.parseDouble(avance_Ins.getText()));
                     t1.setFechaAsignacion(fecha_A_Ins.getText());
                     t1.setFechaVencimiento(fecha_Ve_Ins.getText());
 
@@ -47,7 +45,7 @@ public class insertar {
                             .append("nombre", t1.getNombre())
                             .append("encargado", t1.getNombreEncargado())
                             .append("descripcion", t1.getDescripcion())
-                            .append("avance", t1.getAvance())
+                            .append("avance", 0)
                             .append("fechaAsignacion", t1.getFechaAsignacion())
                             .append("fechaVencimiento", t1.getFechaVencimiento());
                     collection.insertOne(documento);

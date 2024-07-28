@@ -25,7 +25,7 @@ public class menu {
                 fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 fs.setTitle("Eliminación");
                 fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
-                fs.setSize(600,300);
+                fs.setSize(600,400);
                 fs.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(eliminar)).dispose();
             }
@@ -39,7 +39,7 @@ public class menu {
                 fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 fs.setTitle("Búsqueda");
                 fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
-                fs.setSize(600,350);
+                fs.setSize(600,400);
                 fs.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(insertar)).dispose();
 
