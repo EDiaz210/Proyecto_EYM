@@ -57,9 +57,14 @@ public class eliminar {
 
                         }
                     }
+                    int opcion = JOptionPane.showConfirmDialog(null, "Seguro deseas elimiminar esa tarea?");
 
-                    DeleteResult resultado = collection.deleteOne(filtro);
-                    resultadoE.setText("Documentos borrados: " + resultado.getDeletedCount());
+                    if(opcion == JOptionPane.YES_OPTION){
+                        DeleteResult resultado = collection.deleteOne(filtro);
+                        resultadoE.setText("Documentos borrados: " + resultado.getDeletedCount());
+                    }else{
+                        resultadoE.setText("No se ha eliminado ninguna tarea");
+                    }
                 }
             }
         });
