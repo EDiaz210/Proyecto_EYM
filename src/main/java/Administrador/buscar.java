@@ -44,7 +44,7 @@ public class buscar {
                         t1.setId_tarea(documento.getString("id_tarea"));
                         t1.setNombre(documento.getString("nombre"));
                         t1.setDescripcion(documento.getString("descripcion"));
-                        t1.setImagen(documento.getString("imagen"));
+
                         t1.setNombreEncargado(documento.getString("encargado"));
                         t1.setAvance(documento.getDouble("avance"));
                         t1.setFechaAsignacion(documento.getString("fechaAsignacion"));

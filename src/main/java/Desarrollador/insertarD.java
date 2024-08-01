@@ -1,10 +1,7 @@
 package Desarrollador;
 
 import Administrador.menu;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.*;
 import org.bson.Document;
 import org.example.Tareas;
 import javax.swing.*;
@@ -24,7 +21,6 @@ public class insertarD {
     private JButton insertarBD;
     private JTextField idD;
     private JLabel resultadoD;
-    private JTextField avanceD;
     private JLabel avanceDes;
 
 
@@ -35,33 +31,39 @@ public class insertarD {
                 try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
                     MongoDatabase database = mongoClient.getDatabase("LyxuzOXCORP");
                     MongoCollection<Document> collection = database.getCollection("Tareas");
+                    FindIterable<Document> documentos = collection.find();
 
                     Tareas t1 = new Tareas();
 
-                    if ((idD.getText().isEmpty() && nombreD.getText().isEmpty() && desD.getText().isEmpty() && descD.getText().isEmpty() && AsigD.getText().isEmpty() && avanceD.getText().isEmpty() && VenD.getText().isEmpty())){
+                    if ((idD.getText().isEmpty() && nombreD.getText().isEmpty() && desD.getText().isEmpty() && descD.getText().isEmpty() && AsigD.getText().isEmpty() && VenD.getText().isEmpty())){
                         JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
                     }else {
                         t1.setId_tarea(idD.getText());
                         t1.setNombre(nombreD.getText());
                         t1.setNombreEncargado(desD.getText());
                         t1.setDescripcion(descD.getText());
-                        t1.setAvance(Double.parseDouble(avanceD.getText()));
                         t1.setFechaAsignacion(AsigD.getText());
                         t1.setFechaVencimiento(VenD.getText());
 
+                        for (Document documento : documentos) {
+                            if (t1.getId_tarea().equals(idD.getText())) {
+                                JOptionPane.showMessageDialog(null, "La tarea ya existe");
+                                if(t1.getNombreEncargado().equals(desD.getText())){
+                                    JOptionPane.showMessageDialog(null, "El desarrollador esta ocupado en otra tarea");
+                                }
 
-
-
-                        Document documento = new Document("id_tarea", t1.getId_tarea())
-                                .append("nombre", t1.getNombre())
-                                .append("encargado", t1.getNombreEncargado())
-                                .append("descripcion", t1.getDescripcion())
-                                .append("avance", t1.getAvance())
-                                .append("fechaAsignacion", t1.getFechaAsignacion())
-                                .append("fechaVencimiento", t1.getFechaVencimiento());
-                        collection.insertOne(documento);
-                        resultadoD.setText("Datos insertados correctamente");
-
+                            }else {
+                                Document documento1 = new Document("id_tarea", t1.getId_tarea())
+                                        .append("nombre", t1.getNombre())
+                                        .append("encargado", t1.getNombreEncargado())
+                                        .append("descripcion", t1.getDescripcion())
+                                        .append("avance", 0.01)
+                                        .append("fechaAsignacion", t1.getFechaAsignacion())
+                                        .append("fechaVencimiento", t1.getFechaVencimiento());
+                                collection.insertOne(documento1);
+                                resultadoD.setText("Datos insertados correctamente");
+                            }
+                        }
                     }
                 }
             }
@@ -72,7 +74,7 @@ public class insertarD {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame();
-                frame.setContentPane(new menu().menu);
+                frame.setContentPane(new menuD().menuD);
                 frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                 frame.setTitle("Login");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

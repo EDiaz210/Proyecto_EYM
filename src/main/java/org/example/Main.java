@@ -8,7 +8,7 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
     JFrame frame = new JFrame();
-    frame.setContentPane(new menuD().menuD);
+    frame.setContentPane(new menu().menu);
     frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
     frame.setTitle("Login");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
