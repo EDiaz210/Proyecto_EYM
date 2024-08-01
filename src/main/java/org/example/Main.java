@@ -1,21 +1,14 @@
 package org.example;
 import javax.swing.*;
 import Administrador.menu;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.MongoCollection;
-import org.bson.Document;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.result.UpdateResult;
-import com.mongodb.client.result.DeleteResult;
+import Desarrollador.menuD;
 
 import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
     JFrame frame = new JFrame();
-    frame.setContentPane(new menu().menu);
+    frame.setContentPane(new menuD().menuD);
     frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
     frame.setTitle("Login");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
