@@ -1,27 +1,30 @@
 package org.example;
 
+import jdk.incubator.vector.VectorOperators;
+import org.bson.types.Binary;
+
 public class Tareas {
     String id_tarea;
     String nombre;
     String descripcion;
-    String imagen;
     String NombreEncargado;
     double avance;
     String fechaAsignacion;
     String fechaVencimiento;
+    Binary imagenPrioridad;
 
     public Tareas() {
     }
 
-    public Tareas(String id_tarea, String nombre, String descripcion, String imagen, String nombreEncargado, double avance, String fechaAsignacion, String fechaVencimiento) {
+    public Tareas(String id_tarea, String nombre, String descripcion, String nombreEncargado, double avance, String fechaAsignacion, String fechaVencimiento, Binary imagenPrioridad) {
         this.id_tarea = id_tarea;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.imagen = imagen;
         this.NombreEncargado = nombreEncargado;
         this.avance = avance;
         this.fechaAsignacion = fechaAsignacion;
         this.fechaVencimiento = fechaVencimiento;
+        this.imagenPrioridad = imagenPrioridad;
     }
 
     public String getId_tarea() {
@@ -46,14 +49,6 @@ public class Tareas {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
     }
 
     public String getNombreEncargado() {
@@ -86,5 +81,13 @@ public class Tareas {
 
     public void setFechaVencimiento(String fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public Binary getImagenPrioridad() {
+        return imagenPrioridad;
+    }
+
+    public void setImagenPrioridad(Binary imagenPrioridad) {
+        this.imagenPrioridad = imagenPrioridad;
     }
 }

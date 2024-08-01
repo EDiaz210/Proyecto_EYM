@@ -7,11 +7,11 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.example.Tareas;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 public class insertarD {
     public JPanel insertarD;
@@ -48,6 +48,9 @@ public class insertarD {
                         t1.setAvance(Double.parseDouble(avanceD.getText()));
                         t1.setFechaAsignacion(AsigD.getText());
                         t1.setFechaVencimiento(VenD.getText());
+
+
+
 
                         Document documento = new Document("id_tarea", t1.getId_tarea())
                                 .append("nombre", t1.getNombre())
