@@ -28,30 +28,28 @@ public class insertarD {
         insertarBD.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if ((idD.getText().isEmpty() || nombreD.getText().isEmpty() || desD.getText().isEmpty() || descD.getText().isEmpty() || AsigD.getText().isEmpty() || VenD.getText().isEmpty())){
+                    JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+                    return;
+                }
+
+
                 try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
                     MongoDatabase database = mongoClient.getDatabase("LyxuzOXCORP");
                     MongoCollection<Document> collection = database.getCollection("Tareas");
                     FindIterable<Document> documentos = collection.find();
 
                     Tareas t1 = new Tareas();
-
-                    if ((idD.getText().isEmpty() && nombreD.getText().isEmpty() && desD.getText().isEmpty() && descD.getText().isEmpty() && AsigD.getText().isEmpty() && VenD.getText().isEmpty())){
-                        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
-                    }else {
-                        t1.setId_tarea(idD.getText());
-                        t1.setNombre(nombreD.getText());
-                        t1.setNombreEncargado(desD.getText());
-                        t1.setDescripcion(descD.getText());
-                        t1.setFechaAsignacion(AsigD.getText());
-                        t1.setFechaVencimiento(VenD.getText());
+                    t1.setId_tarea(idD.getText());
+                    t1.setNombre(nombreD.getText());
+                    t1.setNombreEncargado(desD.getText());
+                    t1.setDescripcion(descD.getText());
+                    t1.setFechaAsignacion(AsigD.getText());
+                    t1.setFechaVencimiento(VenD.getText());
 
                         for (Document documento : documentos) {
-                            if (t1.getId_tarea().equals(idD.getText())) {
-                                JOptionPane.showMessageDialog(null, "La tarea ya existe");
-                                if(t1.getNombreEncargado().equals(desD.getText())){
-                                    JOptionPane.showMessageDialog(null, "El desarrollador esta ocupado en otra tarea");
-                                }
-
+                            if (idD.getText().equals(t1.getId_tarea()) && desD.getText().equals(t1.getNombre())) {
+                                JOptionPane.showMessageDialog(null, "La tarea ya existe o El desarrollador esta ocupado en otra tarea");
                             }else {
                                 Document documento1 = new Document("id_tarea", t1.getId_tarea())
                                         .append("nombre", t1.getNombre())
@@ -66,7 +64,6 @@ public class insertarD {
                         }
                     }
                 }
-            }
         });
 
 

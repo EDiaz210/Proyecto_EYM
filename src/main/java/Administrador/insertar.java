@@ -26,10 +26,17 @@ public class insertar {
         insertarB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if ((id_Ins.getText().isEmpty() || nombre_Ins.getText().isEmpty() || des_Ins.getText().isEmpty() || desc_Ins.getText().isEmpty() || fecha_A_Ins.getText().isEmpty()  || fecha_Ve_Ins.getText().isEmpty())){
+                    JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+                    return;
+                }
+
                 try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
                     MongoDatabase database = mongoClient.getDatabase("LyxuzOXCORP");
                     MongoCollection<Document> collection = database.getCollection("Tareas");
                     FindIterable<Document> documentos = collection.find();
+
                     Tareas t1 = new Tareas();
                     t1.setId_tarea(id_Ins.getText());
                     t1.setNombre(nombre_Ins.getText());
@@ -39,11 +46,10 @@ public class insertar {
                     t1.setFechaVencimiento(fecha_Ve_Ins.getText());
 
                     for (Document documento : documentos) {
-                    if ((id_Ins.getText().isEmpty() && nombre_Ins.getText().isEmpty() && des_Ins.getText().isEmpty() && desc_Ins.getText().isEmpty() && fecha_A_Ins.getText().isEmpty()  && fecha_Ve_Ins.getText().isEmpty())){
-                        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
-                    }else if (id_Ins.getText().equals(t1.getId_tarea()) && des_Ins.getText().equals(t1.getNombreEncargado())) {
-                            JOptionPane.showMessageDialog(null, "La tarea ya existe o El desarrollador esta ocupado en otra tarea ");
-                    }else {
+
+                        if (id_Ins.getText().equals(t1.getId_tarea()) && des_Ins.getText().equals(t1.getNombreEncargado())) {
+                                JOptionPane.showMessageDialog(null, "La tarea ya existe o El desarrollador esta ocupado en otra tarea ");
+                        }else {
                             Document documento1 = new Document("id_tarea", t1.getId_tarea())
                                     .append("nombre", t1.getNombre())
                                     .append("encargado", t1.getNombreEncargado())
