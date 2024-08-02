@@ -21,6 +21,7 @@ public class insertarD {
     private JButton insertarBD;
     private JTextField idD;
     private JLabel resultadoD;
+    private JLabel prioridadD;
     private JLabel avanceDes;
 
 

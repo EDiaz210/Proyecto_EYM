@@ -20,6 +20,7 @@ public class insertar {
     private JTextField fecha_A_Ins;
     private JTextField id_Ins;
     private JLabel resultado_Ins;
+    private JLabel Prioridad;
 
 
     public insertar() {
@@ -57,6 +58,7 @@ public class insertar {
                                     .append("avance", 0.01)
                                     .append("fechaAsignacion", t1.getFechaAsignacion())
                                     .append("fechaVencimiento", t1.getFechaVencimiento());
+
                             collection.insertOne(documento1);
                             resultado_Ins.setText("Datos insertados correctamente");
                             }
