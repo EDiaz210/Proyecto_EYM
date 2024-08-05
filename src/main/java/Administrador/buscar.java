@@ -1,9 +1,14 @@
 package Administrador;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
@@ -11,6 +16,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import com.mongodb.client.FindIterable;
+import org.bson.types.Binary;
 import org.example.Tareas;
 
 public class buscar {
@@ -18,7 +24,6 @@ public class buscar {
     private JButton buscarB;
     private JTextField codigoT;
     private JButton volver;
-    private JLabel iconM;
     private JProgressBar avanceB;
     private JLabel nombre;
     private JLabel id;
@@ -27,6 +32,7 @@ public class buscar {
     private JLabel fecha_V;
     private JLabel fecha_A;
     private JLabel resultado_txt;
+    private JLabel prioridadB;
 
     public buscar() {
         buscarB.addActionListener(new ActionListener() {
@@ -44,7 +50,6 @@ public class buscar {
                         t1.setId_tarea(documento.getString("id_tarea"));
                         t1.setNombre(documento.getString("nombre"));
                         t1.setDescripcion(documento.getString("descripcion"));
-
                         t1.setNombreEncargado(documento.getString("encargado"));
                         t1.setAvance(documento.getDouble("avance"));
                         t1.setFechaAsignacion(documento.getString("fechaAsignacion"));
@@ -63,16 +68,23 @@ public class buscar {
                             fecha_V.setText(t1.getFechaVencimiento());
 
 
+
+                            Binary Binaryimage = documento.get("imagenPrioridad", Binary.class);
+                            if (Binaryimage != null) {
+                                byte[] imageBytes =Binaryimage.getData();
+                                InputStream is = new ByteArrayInputStream(imageBytes);
+                                BufferedImage image = ImageIO.read(is);
+                                ImageIcon icon = new ImageIcon(image.getScaledInstance(90, 75, Image.SCALE_SMOOTH));
+                                prioridadB.setIcon(icon);
+                            }else{
+                                prioridadB.setText("Imagen no encontrada");
+                            }
                         }else {
                             resultado_txt.setText("No existe esa tarea");
                         }
-
-
-
-
-
-
                     }
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
             }
         });

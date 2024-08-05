@@ -1,5 +1,6 @@
 package Administrador;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
@@ -8,11 +9,18 @@ import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.result.DeleteResult;
+import org.bson.types.Binary;
 import org.example.Tareas;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import static javax.imageio.ImageIO.read;
 
 public class eliminar {
     public JPanel eliminar;
@@ -28,6 +36,7 @@ public class eliminar {
     private JLabel AsigE;
     private JLabel VenE;
     private JLabel resultadoE;
+    private JLabel prioridadE;
 
 
     public eliminar() {
@@ -44,8 +53,8 @@ public class eliminar {
                     Tareas t2 = new Tareas();
                     t2.setId_tarea(buscarElimin.getText());
                     Document filtro = new Document("id_tarea", t2.getId_tarea());
-                    for(Document documento : documentos){
-                        if(documento.getString("id_tarea").equals(t2.getId_tarea())){
+                    for(Document documento : documentos) {
+                        if (documento.getString("id_tarea").equals(t2.getId_tarea())) {
                             nombreE.setText(documento.getString("nombre"));
                             idE.setText(documento.getString("id_tarea"));
                             descE.setText(documento.getString("descripcion"));
@@ -55,20 +64,34 @@ public class eliminar {
                             progressE.setString(Double.toString(documento.getDouble("avance")));
                             progressE.setValue(documento.getDouble("avance").intValue());
 
+                            Binary Binaryimage = documento.get("imagenPrioridad", Binary.class);
+                            if (Binaryimage != null) {
+                                byte[] imageBytes = Binaryimage.getData();
+                                InputStream is = new ByteArrayInputStream(imageBytes);
+                                BufferedImage image = read(is);
+                                ImageIcon icon = new ImageIcon(image.getScaledInstance(90, 75, Image.SCALE_SMOOTH));
+                                prioridadE.setIcon(icon);
+                            } else {
+                                prioridadE.setText("Imagen no encontrada");
+                            }
+                        }
+
+
+                        int option = JOptionPane.showConfirmDialog(null, "¿Deseas continuar con la eliminación de la tarea?", "Confirmación", JOptionPane.YES_NO_OPTION);
+
+                        if (option == JOptionPane.YES_OPTION) {
+                            DeleteResult resultado = collection.deleteOne(filtro);
+                            resultadoE.setText("Documentos borrados: " + resultado.getDeletedCount());
+                        } else {
+                            resultadoE.setText("No se ha borrado ninguna tarea");
                         }
                     }
-                    int option = JOptionPane.showConfirmDialog(null, "¿Deseas continuar con la eliminación de la tarea?", "Confirmación",JOptionPane.YES_NO_OPTION);
-
-                    if(option == JOptionPane.YES_OPTION){
-                        DeleteResult resultado = collection.deleteOne(filtro);
-                        resultadoE.setText("Documentos borrados: " + resultado.getDeletedCount());
-                    }else{
-                        resultadoE.setText("No se ha borrado ninguna tarea");
-                    }
-
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
             }
         });
+
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
