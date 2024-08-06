@@ -1,13 +1,19 @@
 package Desarrollador;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import com.mongodb.client.*;
 import org.bson.Document;
 import com.mongodb.client.result.UpdateResult;
+import org.bson.types.Binary;
 import org.example.Tareas;
 
 public class actualizar {
@@ -27,6 +33,7 @@ public class actualizar {
     private JTextField descM;
     private JTextField desM;
     private JTextField avanceM;
+    private JLabel prioridadA;
 
 
     public actualizar() {
@@ -54,6 +61,18 @@ public class actualizar {
                             progressA.setString(Double.toString(documento.getDouble("avance")));
                             progressA.setValue(documento.getDouble("avance").intValue());
 
+
+                            Binary Binaryimage = documento.get("imagenPrioridad", Binary.class);
+                            if (Binaryimage != null) {
+                                byte[] imageBytes =Binaryimage.getData();
+                                InputStream is = new ByteArrayInputStream(imageBytes);
+                                BufferedImage image = ImageIO.read(is);
+                                ImageIcon icon = new ImageIcon(image.getScaledInstance(90, 75, Image.SCALE_SMOOTH));
+                                prioridadA.setIcon(icon);
+                            }else{
+                                prioridadA.setText("Imagen no encontrada");
+                            }
+
                             Tareas t2 = new Tareas();
 
                             if(descM.getText().isEmpty() && desM.getText().isEmpty() && avanceM.getText().isEmpty()) {
@@ -71,6 +90,8 @@ public class actualizar {
                             }
                         }
                     }
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
             }
         });

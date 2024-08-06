@@ -38,6 +38,7 @@ public class insertar {
             public void actionPerformed(ActionEvent e) {
                 String image = "";
                 JFileChooser JFileChooser = new JFileChooser();
+                JFileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
                 FileNameExtensionFilter formato = new FileNameExtensionFilter("format", "png", "jpeg");
                 JFileChooser.setFileFilter(formato);
                 int proceso = JFileChooser.showOpenDialog(selectImage);

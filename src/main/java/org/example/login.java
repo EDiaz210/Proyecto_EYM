@@ -11,6 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class login {
     private JTextField correo;
@@ -43,7 +45,10 @@ public class login {
 
                                     Administrador ad1 = new Administrador();
                                     ad1.setCorreo(documento.getString("correo"));
-                                    ad1.setContraseña(documento.getString("contraseña"));
+                                    String contraseña = documento.getString("contraseña");
+                                    String contraseñaEYTM = generateHash(contraseña);
+                                    ad1.setContraseña(contraseñaEYTM);
+
 
                                     if (ad1.getCorreo().equals(correo.getText()) && ad1.getContraseña().equals(contra.getText())) {
 
@@ -80,9 +85,11 @@ public class login {
 
                                     Desarrolladores de1 = new Desarrolladores();
                                     de1.setCorreo(documento.getString("correo"));
-                                    de1.setContraseña(documento.getString("contraseña"));
+                                    String contraseña = documento.getString("contraseña");
+                                    String contraseñaEYTMDES = generateHash(contraseña);
+                                    de1.setContraseña(contraseñaEYTMDES);
 
-                                    if (de1.getCorreo().equals(correo.getText()) && de1.getContraseña().equals(contra.getText())) {
+                                    if (de1.getCorreo().equals(correo.getText()) && contraseñaEYTMDES.equals(contra.getText())) {
                                         JFrame frame = new JFrame();
                                         frame.setContentPane(new menuD().menuD);
                                         frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
@@ -102,6 +109,28 @@ public class login {
                 }
             }
         });
+    }
+
+    public static String generateHash(String input) {
+        try{
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digest.digest(input.getBytes());
+            return bytesToHex(encodedhash);
+        }catch (NoSuchAlgorithmException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static String bytesToHex(byte[] hash) {
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : hash) {
+            String hex = Integer.toHexString(0xff & b);
+            if(hex.length() == 1){
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 }
 

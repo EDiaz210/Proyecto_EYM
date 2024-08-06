@@ -79,6 +79,7 @@ public class buscar {
                             }else{
                                 prioridadB.setText("Imagen no encontrada");
                             }
+                            resultado_txt.setText("Tarea encontrada");
                         }else {
                             resultado_txt.setText("No existe esa tarea");
                         }
