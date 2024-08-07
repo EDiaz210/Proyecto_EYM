@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 import com.mongodb.client.*;
 import org.bson.Document;
@@ -82,6 +83,8 @@ public class insertar {
                     t1.setDescripcion(desc_Ins.getText());
                     t1.setFechaAsignacion(fecha_A_Ins.getText());
                     t1.setFechaVencimiento(fecha_Ve_Ins.getText());
+
+
                     t1.setImagenPrioridad(BinaryImage);
 
                     for (Document documento : documentos) {
@@ -114,7 +117,7 @@ public class insertar {
                 frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                 frame.setTitle("Login");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(600, 300);
+                frame.setSize(600, 400);
                 frame.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(volverButton)).dispose();
             }

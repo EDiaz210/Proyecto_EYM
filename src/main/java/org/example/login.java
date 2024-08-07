@@ -20,21 +20,28 @@ public class login {
     private JButton iniciarSesion;
     public JPanel login;
     private JComboBox Seleccionador;
+    private JLabel Usuario;
+    private JLabel Credenciales;
 
     public login() {
+
         Seleccionador.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
                 if (Seleccionador.getSelectedItem().toString().equals("Administrador")) {
 
-                    System.out.println("Ingresaste como Administrador");
+
+                    Usuario.setText("Estas en usuario Administrador");
 
                     iniciarSesion.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
 
+                            if ((correo.getText().isEmpty()) || (contra.getText().isEmpty())){
+                                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+                                return;
+                            }
 
                             try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
                                 MongoDatabase database = mongoClient.getDatabase("LxxuzOXCORP");
@@ -50,18 +57,18 @@ public class login {
                                     ad1.setContraseña(contraseñaEYTM);
 
 
-                                    if (ad1.getCorreo().equals(correo.getText()) && ad1.getContraseña().equals(contra.getText())) {
+                                    if (ad1.getCorreo().equals(correo.getText()) && documento.getString("contraseñaEYT").equals(contra.getText())) {
 
                                         JFrame frame = new JFrame();
                                         frame.setContentPane(new menu().menu);
                                         frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                                         frame.setTitle("Menú");
                                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                        frame.setSize(600, 300);
+                                        frame.setSize(600, 400);
                                         frame.setVisible(true);
                                         ((JFrame)SwingUtilities.getWindowAncestor(iniciarSesion)).dispose();
                                     }else{
-                                        System.out.println("Credenciales no validas");
+                                        Credenciales.setText("Credenciales no validas");
                                     }
                                 }
                             }
@@ -70,11 +77,16 @@ public class login {
 
                 } else if (Seleccionador.getSelectedItem().toString().equals("Desarrollador")) {
 
-                    System.out.println("Ingresaste como Desarrollador");
+                    Usuario.setText("Estas en usuario Desarrollador");
 
                     iniciarSesion.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
+
+                            if ((correo.getText().isEmpty()) || (contra.getText().isEmpty())){
+                                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+                                return;
+                            }
 
                             try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
                                 MongoDatabase database = mongoClient.getDatabase("LxxuzOXCORP");
@@ -89,18 +101,18 @@ public class login {
                                     String contraseñaEYTMDES = generateHash(contraseña);
                                     de1.setContraseña(contraseñaEYTMDES);
 
-                                    if (de1.getCorreo().equals(correo.getText()) && contraseñaEYTMDES.equals(contra.getText())) {
+                                    if (de1.getCorreo().equals(correo.getText()) && documento.getString("contraseñaEYTDE").equals(contra.getText())) {
                                         JFrame frame = new JFrame();
                                         frame.setContentPane(new menuD().menuD);
                                         frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                                         frame.setTitle("Menú");
                                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                                        frame.setSize(600, 300);
+                                        frame.setSize(600, 400);
                                         frame.setVisible(true);
                                         ((JFrame) SwingUtilities.getWindowAncestor(iniciarSesion)).dispose();
 
                                     }else{
-                                    System.out.println("Credenciales no validas");
+                                    Credenciales.setText("Credenciales no validas");
                                     }
                                 }
                             }

@@ -27,6 +27,7 @@ public class insertarD {
     private JLabel resultadoD;
     private JLabel prioridadD;
     private JButton seleccionarImageD;
+    private JTextField duracionD;
     private JLabel avanceDes;
     private Binary BinaryImage;
 
@@ -79,6 +80,7 @@ public class insertarD {
                     t1.setNombre(nombreD.getText());
                     t1.setNombreEncargado(desD.getText());
                     t1.setDescripcion(descD.getText());
+                    t1.setDuracion(Integer.parseInt(duracionD.getText()));
                     t1.setFechaAsignacion(AsigD.getText());
                     t1.setFechaVencimiento(VenD.getText());
                     t1.setImagenPrioridad(BinaryImage);
@@ -95,6 +97,7 @@ public class insertarD {
                                         .append("fechaAsignacion", t1.getFechaAsignacion())
                                         .append("fechaVencimiento", t1.getFechaVencimiento())
                                         .append("imagenPriorida", t1.getImagenPrioridad());
+
                                 collection.insertOne(documento1);
                                 resultadoD.setText("Datos insertados correctamente");
                             }
@@ -112,7 +115,7 @@ public class insertarD {
                 frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                 frame.setTitle("Login");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(600, 300);
+                frame.setSize(600, 400);
                 frame.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(volverButton)).dispose();
             }

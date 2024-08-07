@@ -12,12 +12,8 @@ public class Main {
     frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
     frame.setTitle("Login");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(600, 475);
+    frame.setSize(600, 500);
     frame.setVisible(true);
-
-
-
-
 
 
     }

@@ -100,7 +100,7 @@ public class eliminar {
                 frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                 frame.setTitle("Login");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setSize(600, 300);
+                frame.setSize(600, 400);
                 frame.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(volverButton)).dispose();
             }
