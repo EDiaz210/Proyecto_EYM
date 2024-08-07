@@ -97,7 +97,7 @@ public class insertarD {
                                         .append("fechaAsignacion", t1.getFechaAsignacion())
                                         .append("fechaVencimiento", t1.getFechaVencimiento())
                                         .append("imagenPriorida", t1.getImagenPrioridad());
-
+//PASADO
                                 collection.insertOne(documento1);
                                 resultadoD.setText("Datos insertados correctamente");
                             }
