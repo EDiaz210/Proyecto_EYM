@@ -1,4 +1,28 @@
+**LOGIN**
+-
+![image](https://github.com/user-attachments/assets/ed8286db-9fa9-4abd-a2d9-ec04e5a6ed63)
+![image](https://github.com/user-attachments/assets/43e0797c-793a-4293-b23f-29b141da4f79)
+![image](https://github.com/user-attachments/assets/fdb42ba4-6bd7-474b-a05c-65e6ce38f7f1)
+![image](https://github.com/user-attachments/assets/f44e14f1-95fb-4f7d-a878-bdc8cadaca1c)
+La estrategia de selección para el selector de administrador es la siguiente:
+
+La insignia de usuario se actualiza para mostrar que está en modo administrador. Para administrar la autenticación de administrador, agregue un detector de acciones al botón de inicio de sesión. Desarrollador destacado:
+
+Su etiqueta de usuario se actualizará para mostrar que está en modo desarrollador. Para administrar la autenticación del desarrollador, agregue un detector de acciones al botón de inicio de sesión. Iniciar sesión con lógica de botones
+Validación de campos vacíos:
+
+Si los campos de correo electrónico o de contraste están vacíos, se muestra un mensaje de error. Conexión a MongoDB:
+
+Conexión establecida con MongoDB local en el puerto 27017. Se puede acceder a la base de datos de LxxuzOXCORP y a las colecciones correspondientes. Encuentre y verifique las credenciales:
+Los documentos de la colección se revisan para garantizar que el correo electrónico y la contraseña ingresados ​​coincidan con los ya guardados. Para mayor seguridad, utilice hashes SHA-256 para comparar contraseñas. Redirigir al menú apropiado:
+
+Si el certificado es válido, se abre y se cierra la ventana del menú correspondiente (MENUP para administradores, menuD para desarrolladores). Si las credenciales no son válidas, se muestra un mensaje de error en la pestaña Credenciales. Generar hashes de contraseña
+El método GenerateHash acepta una cadena de entrada y le asigna un valor hash SHA-256 en formato hexadecimal. Convierta una matriz de bytes en una cadena hexadecimal utilizando el método bytesToHex.
+
+-
+
 **ADMINISTRADOR**
+**TAREAS**
 **FORM BUSCAR Y SU CLASE**
 
 -
@@ -61,9 +85,17 @@ Aparece un cuadro de diálogo para confirmar la tarea de eliminación. Si el usu
 Para garantizar que la conexión a MongoDB se cierre automáticamente, el código utiliza un bloque de "reintentar con recursos". Cualquier excepción de tiempo de ejecución se genera como una excepción de tiempo de ejecución.
 
 -
+**EQUIPOS**
+-
+Los forms de equipos cumplen las mimas funcinalidades que las de las de tareas simplemente no se va visualizar lo que es la barra de porcetaje, el nombre de la data base cambia y el de la coleccion,ylas interfaces de cada uno son diferentes porque recordemos que en equipos vamos a componer de desarrolladores entonces solo vamos a dijitar los nombres en insertar y conformar equipos, por otro lado tambien hay un insertar, eliminar y buscar para lo que son equipos de desarrollo.
+
+![image](https://github.com/user-attachments/assets/5aaa8ec3-61b8-463c-9853-91c37a23d595)
+![image](https://github.com/user-attachments/assets/e571a1b0-f0fc-4933-b57a-e4a7e666f3a9)
+![image](https://github.com/user-attachments/assets/c4cc44e2-43e5-4adb-8114-975fb1a0f91d)
+
+
+-
 **Desarrollador**
--
--
 **FORM ACTUALIZAR Y SU CLASE**
 -
 ![image](https://github.com/user-attachments/assets/c0888c30-4b64-4001-8037-867a00cdf142)
@@ -82,11 +114,19 @@ Si los campos OffM, OffM y AdvanceM están vacíos, se mostrará un mensaje de e
 Si no hay ningún campo vacío, se crea una nueva instancia de la clase Tareas y se establece con el valor ingresado. Se crea un documento de actualización que incluye el valor de descripción actualizado, el equipo responsable y el progreso. Los archivos de la colección se actualizan y se muestran los resultados de la operación.
 
 -
+**FORM INSERTAR Y SU CLASE**
+-
+En este caso el form insertar con su clase cumple la misma funcionalidad que el insertar del administador ya que los dos usuarios puede crear nuevas tareas.
+![image](https://github.com/user-attachments/assets/b3114d9a-c519-4968-99e6-efdbd0bcc2e4)
+
+-
  **BOTON VOLVER**:
  
 El botón "Volver" tiene un "ActionListener" que se inicia cuando se hace clic en él.
 Crear nueva ventana: cree una nueva instancia de "JFrame". Nueva configuración de ventana:
 El contenido de la ventana se establece en la barra de menú principal. La imagen se establece como icono de ventana. El nombre de la ventana está configurado en "Entrar". Configure el programa para que se cierre cuando se cierre la ventana. El tamaño de la ventana gráfica es de 600 x 300 píxeles. Se abre una ventana. Cerrar la ventana actual: Cerrar la ventana que contiene el botón "Atrás".
+
+En el proyecto podemos encontrar diferentes botones "volver" ya que estos seran utilizados para retornar a la pestaña que deseamos, siempre y cuando en el setContentPane se ponga el panel publico que desamos visualizar.
 
 Dependencias:
 Java Swing es una herramienta para crear y gestionar interfaces gráficas de usuario. La utilidad java.awt.Toolkit se utiliza para cargar imágenes de iconos.
