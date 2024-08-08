@@ -30,12 +30,12 @@ Se enviará un mensaje al usuario para determinar si se ha encontrado la tarea.
 ![image](https://github.com/user-attachments/assets/7eacbb12-b237-4f27-bc5b-815664d2a9e9)
 -
 En el comienzo del código se inicializa los spinner:
-1. Spinner1: Su valor puede estar entre 1 y 12, y el valor inicial es 1. 2. Spinner2: establezca un valor entre 1 y 60 con un valor inicial de 1. Selección de imágenes
+1. Spinner1: Su valor puede estar entre 1 y 12, y el valor inicial es 1.
+2. 2. Spinner2: establezca un valor entre 1 y 60 con un valor inicial de 1. Selección de imágenes
 
-El botón "SelectImage" le permite abrir un "JFileChooser" para seleccionar una imagen. - Filtrar archivos con extensiones jpeg y png. - Convierta la imagen seleccionada en un objeto binario y muéstrela en la pestaña de prioridad.
-Agregar nuevos datos
-
-El botón "InsertarB" confirma que todos los campos de texto están completos. - Conectarse a la base de datos MongoDB. - Recibirás una colección de "Misiones". - Incluir datos del usuario en el objeto "Tarea". - Verificar si hay una tarea con el mismo ID o un desarrollador asignado a una tarea diferente. Si la verificación tiene éxito, el nuevo archivo se coloca en la colección de tareas. - Mostrar un mensaje que indica que los datos se cargaron correctamente, la tarea se completó o el desarrollador está ocupado. Dependencias:
+El botón "SelectImage" le permite abrir un "JFileChooser" para seleccionar una imagen. Se filtrar archivos con extensiones jpeg y png y permite conviertir la imagen seleccionada en un objeto binario. Mostrandola en la pestaña de prioridad.
+Tambien se puede agregar nuevos datos como:
+El botón "InsertarB" confirma que todos los campos de texto están completos  y que se conecte a la base de datos MongoDB. Se recibe una colección de "Tareas". Donde se puede incluir datos del usuario en el objeto "Tarea" y  verificar si hay una tarea con el mismo ID o un desarrollador asignado a una tarea diferente. Si la verificación tiene éxito, el nuevo archivo se coloca en la colección de tareas. Caso contrario procede a mostrar un mensaje que indica que los datos se cargaron correctamente, la tarea se completó o el desarrollador está ocupado.
 
 -
  **BOTON VOLVER**:
