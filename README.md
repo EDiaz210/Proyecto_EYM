@@ -1,4 +1,4 @@
-
+**ADMINISTRADOR**
 **FORM BUSCAR Y SU CLASE**
 
 -
@@ -60,6 +60,26 @@ Si el archivo contiene una imagen en formato binario, se convierte en una imagen
 Aparece un cuadro de diálogo para confirmar la tarea de eliminación. Si el usuario lo aprueba, el archivo se elimina de la colección y se muestran los resultados de la operación. Manejar excepciones
 Para garantizar que la conexión a MongoDB se cierre automáticamente, el código utiliza un bloque de "reintentar con recursos". Cualquier excepción de tiempo de ejecución se genera como una excepción de tiempo de ejecución.
 
+-
+**Desarrollador**
+-
+-
+**FORM ACTUALIZAR Y SU CLASE**
+-
+![image](https://github.com/user-attachments/assets/c0888c30-4b64-4001-8037-867a00cdf142)
+![image](https://github.com/user-attachments/assets/49f9439a-1414-44ca-b2ef-f0ba8c11828c)
+![image](https://github.com/user-attachments/assets/58e6e425-2778-4260-8023-267b96842e20)
+-
+La lógica del botón updateB está conectada a MongoDB:
+
+Conéctese a la base de datos MongoDB en esta máquina en el puerto 27017. Se puede acceder a colecciones de tareas y bases de datos LyxuzOXCORP. Buscando archivos:
+
+Busca en la colección de tareas archivos que coincidan con el ID de tarea ingresado por el usuario. Mostrar información sobre el proyecto:
+
+Si se encuentra, la información del archivo se mostrará en el elemento GUI correspondiente. Si el archivo contiene una imagen en formato binario, se convertirá en una imagen y se mostrará con prioridad A. Explorar espacio libre:
+Si los campos OffM, OffM y AdvanceM están vacíos, se mostrará un mensaje de error solicitándole que complete todos los campos. Actualizar archivo:
+
+Si no hay ningún campo vacío, se crea una nueva instancia de la clase Tareas y se establece con el valor ingresado. Se crea un documento de actualización que incluye el valor de descripción actualizado, el equipo responsable y el progreso. Los archivos de la colección se actualizan y se muestran los resultados de la operación.
 
 -
  **BOTON VOLVER**:
