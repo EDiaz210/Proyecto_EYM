@@ -22,6 +22,19 @@ Este método está diseñado para recuperar y mostrar el orden de prioridad de l
 Se enviará un mensaje al usuario para determinar si se ha encontrado la tarea.
 
 -
+**FORM INSERTAR Y SU CLASE**
+-
+![image](https://github.com/user-attachments/assets/775f8378-298d-4934-8d59-014763c73c89)
+-
+En el comienzo del código se inicializa los spinner:
+1. Spinner1: Su valor puede estar entre 1 y 12, y el valor inicial es 1. 2. Spinner2: establezca un valor entre 1 y 60 con un valor inicial de 1. Selección de imágenes
+
+El botón "SelectImage" le permite abrir un "JFileChooser" para seleccionar una imagen. - Filtrar archivos con extensiones jpeg y png. - Convierta la imagen seleccionada en un objeto binario y muéstrela en la pestaña de prioridad.
+Agregar nuevos datos
+
+El botón "InsertarB" confirma que todos los campos de texto están completos. - Conectarse a la base de datos MongoDB. - Recibirás una colección de "Misiones". - Incluir datos del usuario en el objeto "Tarea". - Verificar si hay una tarea con el mismo ID o un desarrollador asignado a una tarea diferente. Si la verificación tiene éxito, el nuevo archivo se coloca en la colección de tareas. - Mostrar un mensaje que indica que los datos se cargaron correctamente, la tarea se completó o el desarrollador está ocupado. Dependencias:
+
+-
  **BOTON VOLVER**:
  
 El botón "Volver" tiene un "ActionListener" que se inicia cuando se hace clic en él.
