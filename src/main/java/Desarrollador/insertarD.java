@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import javax.swing.SpinnerNumberModel;
 
 
 public class insertarD {
@@ -28,11 +29,24 @@ public class insertarD {
     private JLabel prioridadD;
     private JButton seleccionarImageD;
     private JTextField duracionD;
+    private JSpinner spinner1;
+    private JSpinner spinner2;
     private JLabel avanceDes;
     private Binary BinaryImage;
 
 
     public insertarD() {
+        int minimo=1;
+        int maximo=12;
+        int inicializador=1;
+        SpinnerNumberModel model = new SpinnerNumberModel(inicializador,minimo, maximo,1);
+        spinner1.setModel(model);
+
+        int minimo1=1;
+        int maximo1=60;
+        int inicializador1=1;
+        SpinnerNumberModel model2 = new SpinnerNumberModel(inicializador1,minimo1, maximo1,1);
+        spinner2.setModel(model2);
 
         seleccionarImageD.addActionListener(new ActionListener() {
             @Override
@@ -78,11 +92,11 @@ public class insertarD {
                     Tareas t1 = new Tareas();
                     t1.setId_tarea(idD.getText());
                     t1.setNombre(nombreD.getText());
-                    t1.setNombreEncargado(desD.getText());
+                    t1.setEquipoEncargado(desD.getText());
                     t1.setDescripcion(descD.getText());
-                    t1.setDuracion(Integer.parseInt(duracionD.getText()));
                     t1.setFechaAsignacion(AsigD.getText());
                     t1.setFechaVencimiento(VenD.getText());
+                    t1.setDuracion(spinner1.getValue()+":"+spinner2.getValue());
                     t1.setImagenPrioridad(BinaryImage);
 
                         for (Document documento : documentos) {
@@ -91,13 +105,13 @@ public class insertarD {
                             }else {
                                 Document documento1 = new Document("id_tarea", t1.getId_tarea())
                                         .append("nombre", t1.getNombre())
-                                        .append("encargado", t1.getNombreEncargado())
+                                        .append("Equipoencargado", t1.getEquipoEncargado())
                                         .append("descripcion", t1.getDescripcion())
                                         .append("avance", 0.01)
                                         .append("fechaAsignacion", t1.getFechaAsignacion())
                                         .append("fechaVencimiento", t1.getFechaVencimiento())
-                                        .append("imagenPriorida", t1.getImagenPrioridad());
-//PASADO
+                                        .append("imagenPrioridad", t1.getImagenPrioridad())
+                                        .append("duracion", t1.getDuracion());
                                 collection.insertOne(documento1);
                                 resultadoD.setText("Datos insertados correctamente");
                             }

@@ -7,9 +7,9 @@ public class Tareas {
     String id_tarea;
     String nombre;
     String descripcion;
-    String NombreEncargado;
+    String equipoEncargado;
     double avance;
-    int duracion;
+    String duracion;
     String fechaAsignacion;
     String fechaVencimiento;
     Binary imagenPrioridad;
@@ -17,11 +17,11 @@ public class Tareas {
     public Tareas() {
     }
 
-    public Tareas(String id_tarea, String nombre, String descripcion, String nombreEncargado, double avance, String fechaAsignacion, String fechaVencimiento, Binary imagenPrioridad, int duracion) {
+    public Tareas(String id_tarea, String nombre, String descripcion, String equipoEncargado, double avance, String fechaAsignacion, String fechaVencimiento, Binary imagenPrioridad, String duracion) {
         this.id_tarea = id_tarea;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.NombreEncargado = nombreEncargado;
+        this.equipoEncargado = equipoEncargado;
         this.avance = avance;
         this.fechaAsignacion = fechaAsignacion;
         this.fechaVencimiento = fechaVencimiento;
@@ -53,12 +53,12 @@ public class Tareas {
         this.descripcion = descripcion;
     }
 
-    public String getNombreEncargado() {
-        return NombreEncargado;
+    public String getEquipoEncargado() {
+        return equipoEncargado;
     }
 
-    public void setNombreEncargado(String nombreEncargado) {
-        NombreEncargado = nombreEncargado;
+    public void setEquipoEncargado(String equipoEncargado) {
+        this.equipoEncargado = equipoEncargado;
     }
 
     public double getAvance() {
@@ -93,11 +93,12 @@ public class Tareas {
         this.imagenPrioridad = imagenPrioridad;
     }
 
-    public int getDuracion() {
+
+    public String getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(int duracion) {
+    public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
 }

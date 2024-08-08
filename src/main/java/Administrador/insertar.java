@@ -7,9 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import javax.swing.SpinnerNumberModel;
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 
 import com.mongodb.client.*;
 import org.bson.Document;
@@ -29,10 +28,24 @@ public class insertar {
     private JLabel resultado_Ins;
     private JLabel Prioridad;
     private JButton selectImage;
+    private JSpinner spinner2;
+    private JSpinner spinner1;
     private Binary BinaryImage;
 
 
     public insertar() {
+
+        int minimo=1;
+        int maximo=12;
+        int inicializador=1;
+        SpinnerNumberModel model = new SpinnerNumberModel(inicializador,minimo, maximo,1);
+        spinner1.setModel(model);
+
+        int minimo1=1;
+        int maximo1=60;
+        int inicializador1=1;
+        SpinnerNumberModel model2 = new SpinnerNumberModel(inicializador1,minimo1, maximo1,1);
+        spinner2.setModel(model2);
 
         selectImage.addActionListener(new ActionListener() {
             @Override
@@ -79,8 +92,9 @@ public class insertar {
                     Tareas t1 = new Tareas();
                     t1.setId_tarea(id_Ins.getText());
                     t1.setNombre(nombre_Ins.getText());
-                    t1.setNombreEncargado(des_Ins.getText());
+                    t1.setEquipoEncargado(des_Ins.getText());
                     t1.setDescripcion(desc_Ins.getText());
+                    t1.setDuracion(spinner1.getValue()+":"+spinner2.getValue());
                     t1.setFechaAsignacion(fecha_A_Ins.getText());
                     t1.setFechaVencimiento(fecha_Ve_Ins.getText());
 
@@ -94,12 +108,14 @@ public class insertar {
                         }else {
                             Document documento1 = new Document("id_tarea", t1.getId_tarea())
                                     .append("nombre", t1.getNombre())
-                                    .append("encargado", t1.getNombreEncargado())
+                                    .append("equipoEncargado", t1.getEquipoEncargado())
                                     .append("descripcion", t1.getDescripcion())
                                     .append("avance", 0.01)
                                     .append("fechaAsignacion", t1.getFechaAsignacion())
                                     .append("fechaVencimiento", t1.getFechaVencimiento())
-                                    .append("imagenPrioridad", t1.getImagenPrioridad());
+                                    .append("imagenPrioridad", t1.getImagenPrioridad())
+                                    .append("duracion", t1.getDuracion());
+
                             collection.insertOne(documento1);
                             resultado_Ins.setText("Datos insertados correctamente");
                             }

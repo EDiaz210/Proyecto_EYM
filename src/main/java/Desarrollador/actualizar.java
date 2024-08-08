@@ -78,12 +78,12 @@ public class actualizar {
                             if(descM.getText().isEmpty() && desM.getText().isEmpty() && avanceM.getText().isEmpty()) {
                                 JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
                             }else {
-                                t2.setNombreEncargado(desM.getText());
+                                t2.setEquipoEncargado(desM.getText());
                                 t2.setDescripcion(descM.getText());
                                 t2.setAvance(Double.parseDouble(avanceM.getText()));
 
                                 Document actualizacion = new Document("$set", new Document("descripcion", t2.getDescripcion())
-                                        .append("encargado", t2.getNombreEncargado())
+                                        .append("equipoEncargado", t2.getEquipoEncargado())
                                         .append("avance", t2.getAvance()));
                                 collection.updateOne(filtro, actualizacion);
                                 resultadoA.setText("Datos insertados correctamente");

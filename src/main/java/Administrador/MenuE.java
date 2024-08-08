@@ -1,65 +1,69 @@
 package Administrador;
 
-import org.example.login;
+import Equipos.Buscar;
+import Equipos.Eliminar;
+import Equipos.Insertar;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class menu {
-    public JPanel menu;
-    private JButton VolverN;
-    private JButton insertar;
+public class MenuE {
+    public JPanel menuE;
     private JButton buscar;
+    private JButton insertar;
     private JButton eliminar;
+    private JButton VolverE;
 
+    public MenuE() {
 
-    public menu() {
-
-        eliminar.addActionListener(new ActionListener() {
+        insertar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame fs = new JFrame();
-                fs.setContentPane(new eliminar().eliminar);
+                fs.setContentPane(new Insertar().InsertarE);
                 fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                fs.setTitle("Eliminación");
+                fs.setTitle("Insercción Equipos");
                 fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
-                fs.setSize(600,450);
-                fs.setVisible(true);
-                ((JFrame) SwingUtilities.getWindowAncestor(eliminar)).dispose();
-            }
-        });
-        buscar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                JFrame fs = new JFrame();
-                fs.setContentPane(new buscar().buscar);
-                fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                fs.setTitle("Búsqueda");
-                fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
-                fs.setSize(600,450);
+                fs.setSize(600,600);
                 fs.setVisible(true);
                 ((JFrame) SwingUtilities.getWindowAncestor(insertar)).dispose();
 
             }
         });
-        insertar.addActionListener(new ActionListener() {
+
+
+        buscar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame fs = new JFrame();
-                fs.setContentPane(new insertar().insertar);
+                fs.setContentPane(new Buscar().BuscarE);
                 fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                fs.setTitle("Insercción");
+                fs.setTitle("Búsqueda Equipos");
                 fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                 fs.setSize(600,600);
                 fs.setVisible(true);
-                ((JFrame) SwingUtilities.getWindowAncestor(insertar)).dispose(); 
+                ((JFrame) SwingUtilities.getWindowAncestor(insertar)).dispose();
 
             }
         });
-        VolverN.addActionListener(new ActionListener() {
+
+        eliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame fs = new JFrame();
+                fs.setContentPane(new Eliminar().EliminarE);
+                fs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                fs.setTitle("Eliminacion de Equipos");
+                fs.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
+                fs.setSize(600,600);
+                fs.setVisible(true);
+                ((JFrame) SwingUtilities.getWindowAncestor(insertar)).dispose();
+
+            }
+        });
+        VolverE.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame();
@@ -69,7 +73,7 @@ public class menu {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setSize(600, 350);
                 frame.setVisible(true);
-                ((JFrame)SwingUtilities.getWindowAncestor(VolverN)).dispose();
+                ((JFrame)SwingUtilities.getWindowAncestor(VolverE)).dispose();
             }
         });
     }

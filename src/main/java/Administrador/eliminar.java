@@ -44,6 +44,11 @@ public class eliminar {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if ((buscarElimin.getText().isEmpty())){
+                    JOptionPane.showMessageDialog(null, "Ingrese el codigo de la tarea");
+                    return;
+                }
+
 
                 try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
                     MongoDatabase database = mongoClient.getDatabase("LyxuzOXCORP");
@@ -52,6 +57,7 @@ public class eliminar {
 
                     Tareas t2 = new Tareas();
                     t2.setId_tarea(buscarElimin.getText());
+
                     Document filtro = new Document("id_tarea", t2.getId_tarea());
                     for(Document documento : documentos) {
                         if (documento.getString("id_tarea").equals(t2.getId_tarea())) {

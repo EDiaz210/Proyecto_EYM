@@ -38,6 +38,11 @@ public class buscar {
         buscarB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if ((codigoT.getText().isEmpty())){
+                    JOptionPane.showMessageDialog(null, "Ingrese el codigo de la tarea");
+                    return;
+                }
                 try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
 
                     MongoDatabase database = mongoClient.getDatabase("LyxuzOXCORP");
@@ -50,7 +55,7 @@ public class buscar {
                         t1.setId_tarea(documento.getString("id_tarea"));
                         t1.setNombre(documento.getString("nombre"));
                         t1.setDescripcion(documento.getString("descripcion"));
-                        t1.setNombreEncargado(documento.getString("encargado"));
+                        t1.setEquipoEncargado(documento.getString("equipoEncargado"));
                         t1.setAvance(documento.getDouble("avance"));
                         t1.setFechaAsignacion(documento.getString("fechaAsignacion"));
                         t1.setFechaVencimiento(documento.getString("fechaVencimiento"));
@@ -62,7 +67,7 @@ public class buscar {
                             avanceB.setValue((int) t1.getAvance());
                             avanceB.setStringPainted(true);
                             id.setText(t1.getId_tarea());
-                            desarrollador.setText(t1.getNombreEncargado());
+                            desarrollador.setText(t1.getEquipoEncargado());
                             desc.setText(t1.getDescripcion());
                             fecha_A.setText(t1.getFechaAsignacion());
                             fecha_V.setText(t1.getFechaVencimiento());
