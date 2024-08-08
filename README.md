@@ -1,3 +1,8 @@
+**Objetivo Principal**
+-
+El propósito principal de estos códigos es crear una interfaz gráfica de usuario (GUI) basada en Java que permita la gestión de usuarios y tareas en una aplicación de desarrollo de software que utiliza una base de datos MongoDB. Los códigos proporcionados incluyen funcionalidades importantes para varios tipos de usuarios (administradores y desarrolladores), incluida la eliminación de tareas, la actualización de detalles de tareas y el inicio de sesión. El sistema tiene como objetivo proporcionar una plataforma efectiva para administrar las tareas de un proyecto, asegurando la integridad y seguridad de los datos mediante la autenticación de usuarios y la manipulación adecuada de los registros en la base de datos.
+
+-
 **LOGIN**
 -
 ![image](https://github.com/user-attachments/assets/ed8286db-9fa9-4abd-a2d9-ec04e5a6ed63)
@@ -88,7 +93,7 @@ Para garantizar que la conexión a MongoDB se cierre automáticamente, el códig
 **EQUIPOS**
 -
 Los forms de equipos cumplen las mimas funcinalidades que las de las de tareas simplemente no se va visualizar lo que es la barra de porcetaje, el nombre de la data base cambia y el de la coleccion,ylas interfaces de cada uno son diferentes porque recordemos que en equipos vamos a componer de desarrolladores entonces solo vamos a dijitar los nombres en insertar y conformar equipos, por otro lado tambien hay un insertar, eliminar y buscar para lo que son equipos de desarrollo.
-
+-
 ![image](https://github.com/user-attachments/assets/5aaa8ec3-61b8-463c-9853-91c37a23d595)
 ![image](https://github.com/user-attachments/assets/e571a1b0-f0fc-4933-b57a-e4a7e666f3a9)
 ![image](https://github.com/user-attachments/assets/c4cc44e2-43e5-4adb-8114-975fb1a0f91d)
@@ -117,6 +122,7 @@ Si no hay ningún campo vacío, se crea una nueva instancia de la clase Tareas y
 **FORM INSERTAR Y SU CLASE**
 -
 En este caso el form insertar con su clase cumple la misma funcionalidad que el insertar del administador ya que los dos usuarios puede crear nuevas tareas.
+-
 ![image](https://github.com/user-attachments/assets/b3114d9a-c519-4968-99e6-efdbd0bcc2e4)
 
 -
@@ -133,8 +139,27 @@ Java Swing es una herramienta para crear y gestionar interfaces gráficas de usu
 
 -
 ![image](https://github.com/user-attachments/assets/a2abef8d-6595-42ea-9f84-f1fac5efeb21)
+-
+**Conclusiones**
+-
+La aplicación utiliza un sistema de autenticación para distinguir entre desarrolladores y administradores. Esta diferencia se gestiona mediante JComboBox, que permite a los usuarios elegir sus roles, y la aplicación cambia su comportamiento según el tipo de usuario al acceder a diferentes colecciones de MongoDB. 
 
+La aplicación utiliza MongoDB como sistema de almacenamiento para gestionar tareas y credenciales de usuario. Maneja de manera eficiente operaciones básicas como conectarse a una base de datos y realizar consultas, actualizar y eliminar archivos. Compara las credenciales ingresadas con los datos almacenados en MongoDB para autenticar al usuario.
 
+Utilice hash SHA-256 para proteger las contraseñas. Este método mejora la seguridad al almacenar la contraseña como un valor hash en lugar de texto sin formato. Sin embargo, vale la pena señalar que es posible implementar otras técnicas (como salt) y utilizar algoritmos más potentes (como bcrypt) para aumentar la seguridad.
 
+-
+**Recomendaciones**
+-
+Para evitar posibles errores durante las conexiones y consultas en MongoDB, se debe implementar un manejo de excepciones más estricto, como MongoException, incluso si IOException se maneja en el código del programa. Esto mejorará la experiencia del usuario y ayudará a proporcionar mensajes de error más precisos. 
+
+Se debe mejorar la validación de los perfiles de usuario. Compruebe, por ejemplo. Formatos de correo electrónico y contraseña. Esto puede ayudar a prevenir errores y proteger la integridad de los datos de la base de datos.
+
+Considere agregar un sistema de control de acceso más granular a su aplicación. Esto puede incluir permisos específicos de roles que brindan a los desarrolladores y administradores acceso solo a la funcionalidad y los datos que necesitan, mejorando la seguridad y el control del usuario.
+
+-
+**LINK DEL VIDEO**
+-
+https://youtu.be/thAoRaPqCJA
 -
 
