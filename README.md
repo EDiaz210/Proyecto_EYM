@@ -39,6 +39,29 @@ Tambien se puede agregar nuevos datos como:
 El botón "InsertarB" confirma que todos los campos de texto están completos  y que se conecte a la base de datos MongoDB. Se recibe una colección de "Tareas". Donde se puede incluir datos del usuario en el objeto "Tarea" y  verificar si hay una tarea con el mismo ID o un desarrollador asignado a una tarea diferente. Si la verificación tiene éxito, el nuevo archivo se coloca en la colección de tareas. Caso contrario procede a mostrar un mensaje que indica que los datos se cargaron correctamente, la tarea se completó o el desarrollador está ocupado.
 
 -
+**FORM ElIMINAR Y SU CLASE**
+-
+![image](https://github.com/user-attachments/assets/fa4c9736-9b8a-4f15-a2f1-2888fbbd1731)
+![image](https://github.com/user-attachments/assets/3b25dbf9-d260-4fb6-96f2-bbf70018da2e)
+![image](https://github.com/user-attachments/assets/74930db2-88ee-4bb8-8b62-0f5039ffa28d)
+-
+La lógica del botón EliminarB para verificar si hay un campo vacío es la siguiente:
+
+Si el campo Eliminar búsqueda está vacío, se mostrará un mensaje de error solicitando el código de tarea. Conexión a MongoDB:
+
+Conéctese a la base de datos MongoDB en esta máquina en el puerto 27017. Se puede acceder a colecciones de tareas y bases de datos LyxuzOXCORP. Buscando archivos:
+
+Busca en la colección de tareas archivos que coincidan con el ID de tarea ingresado por el usuario. Mostrar información sobre el proyecto:
+
+Si se encuentra, la información del archivo se mostrará en el elemento GUI correspondiente.
+
+Si el archivo contiene una imagen en formato binario, se convierte en una imagen y se muestra con prioridad E. Aceptar eliminación:
+
+Aparece un cuadro de diálogo para confirmar la tarea de eliminación. Si el usuario lo aprueba, el archivo se elimina de la colección y se muestran los resultados de la operación. Manejar excepciones
+Para garantizar que la conexión a MongoDB se cierre automáticamente, el código utiliza un bloque de "reintentar con recursos". Cualquier excepción de tiempo de ejecución se genera como una excepción de tiempo de ejecución.
+
+
+-
  **BOTON VOLVER**:
  
 El botón "Volver" tiene un "ActionListener" que se inicia cuando se hace clic en él.
