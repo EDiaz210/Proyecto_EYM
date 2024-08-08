@@ -1,5 +1,6 @@
--
+
 **FORM BUSCAR Y SU CLASE**
+
 -
 ![image](https://github.com/user-attachments/assets/89f398eb-37bf-4d66-aa61-4b3d9af96247)
 ![image](https://github.com/user-attachments/assets/08997762-3be4-42d5-9de5-d14ff085bba4)
