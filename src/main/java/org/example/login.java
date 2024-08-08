@@ -1,7 +1,7 @@
 package org.example;
 
 import Administrador.Administrador;
-import Administrador.menu;
+import Administrador.MENUP;
 import Desarrollador.Desarrolladores;
 import Desarrollador.menuD;
 import com.mongodb.client.*;
@@ -60,7 +60,7 @@ public class login {
                                     if (ad1.getCorreo().equals(correo.getText()) && documento.getString("contraseñaEYT").equals(contra.getText())) {
 
                                         JFrame frame = new JFrame();
-                                        frame.setContentPane(new menu().menu);
+                                        frame.setContentPane(new MENUP().MENUP);
                                         frame.setIconImage(Toolkit.getDefaultToolkit().getImage("src/logo.jpg"));
                                         frame.setTitle("Menú");
                                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

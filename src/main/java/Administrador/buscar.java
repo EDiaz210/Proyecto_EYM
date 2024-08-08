@@ -33,6 +33,7 @@ public class buscar {
     private JLabel fecha_A;
     private JLabel resultado_txt;
     private JLabel prioridadB;
+    private JLabel duracion;
 
     public buscar() {
         buscarB.addActionListener(new ActionListener() {
@@ -59,6 +60,7 @@ public class buscar {
                         t1.setAvance(documento.getDouble("avance"));
                         t1.setFechaAsignacion(documento.getString("fechaAsignacion"));
                         t1.setFechaVencimiento(documento.getString("fechaVencimiento"));
+                        t1.setDuracion(documento.getString("duracion"));
 
 
                         if (t1.getId_tarea().equals(codigoT.getText())){
@@ -71,6 +73,7 @@ public class buscar {
                             desc.setText(t1.getDescripcion());
                             fecha_A.setText(t1.getFechaAsignacion());
                             fecha_V.setText(t1.getFechaVencimiento());
+                            duracion.setText(t1.getDuracion());
 
 
 

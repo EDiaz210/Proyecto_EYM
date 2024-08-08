@@ -37,6 +37,7 @@ public class eliminar {
     private JLabel VenE;
     private JLabel resultadoE;
     private JLabel prioridadE;
+    private JLabel duracion;
 
 
     public eliminar() {
@@ -69,6 +70,7 @@ public class eliminar {
                             VenE.setText(documento.getString("fechaVencimiento"));
                             progressE.setString(Double.toString(documento.getDouble("avance")));
                             progressE.setValue(documento.getDouble("avance").intValue());
+                            duracion.setText((documento.getString("duracion")));
 
                             Binary Binaryimage = documento.get("imagenPrioridad", Binary.class);
                             if (Binaryimage != null) {
