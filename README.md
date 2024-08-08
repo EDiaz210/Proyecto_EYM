@@ -25,7 +25,7 @@ Se enviará un mensaje al usuario para determinar si se ha encontrado la tarea.
  
 El botón "Volver" tiene un "ActionListener" que se inicia cuando se hace clic en él.
 Crear nueva ventana: cree una nueva instancia de "JFrame". Nueva configuración de ventana:
-El contenido de la ventana se establece en la barra de menú principal. - La imagen se establece como icono de ventana. - El nombre de la ventana está configurado en "Entrar". - Configure el programa para que se cierre cuando se cierre la ventana. - El tamaño de la ventana gráfica es de 600 x 300 píxeles. Se abre una ventana. Cerrar la ventana actual: - Cerrar la ventana que contiene el botón "Atrás".
+El contenido de la ventana se establece en la barra de menú principal. La imagen se establece como icono de ventana. El nombre de la ventana está configurado en "Entrar". Configure el programa para que se cierre cuando se cierre la ventana. El tamaño de la ventana gráfica es de 600 x 300 píxeles. Se abre una ventana. Cerrar la ventana actual: Cerrar la ventana que contiene el botón "Atrás".
 Dependencias:
 Java Swing es una herramienta para crear y gestionar interfaces gráficas de usuario. La utilidad java.awt.Toolkit se utiliza para cargar imágenes de iconos.
 
