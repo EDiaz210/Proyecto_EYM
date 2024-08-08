@@ -25,6 +25,9 @@ Se enviará un mensaje al usuario para determinar si se ha encontrado la tarea.
 **FORM INSERTAR Y SU CLASE**
 -
 ![image](https://github.com/user-attachments/assets/775f8378-298d-4934-8d59-014763c73c89)
+![image](https://github.com/user-attachments/assets/81cd90ba-1f3b-4f40-b9d6-f6e821b2047e)
+![image](https://github.com/user-attachments/assets/760a0e0e-2412-4aa8-b993-e92fd6b04c31)
+![image](https://github.com/user-attachments/assets/7eacbb12-b237-4f27-bc5b-815664d2a9e9)
 -
 En el comienzo del código se inicializa los spinner:
 1. Spinner1: Su valor puede estar entre 1 y 12, y el valor inicial es 1. 2. Spinner2: establezca un valor entre 1 y 60 con un valor inicial de 1. Selección de imágenes
