@@ -31,9 +31,10 @@ Se enviará un mensaje al usuario para determinar si se ha encontrado la tarea.
 -
 En el comienzo del código se inicializa los spinner:
 1. Spinner1: Su valor puede estar entre 1 y 12, y el valor inicial es 1.
-2. 2. Spinner2: establezca un valor entre 1 y 60 con un valor inicial de 1. Selección de imágenes
+2. Spinner2: establezca un valor entre 1 y 60 con un valor inicial de 1. 
 
 El botón "SelectImage" le permite abrir un "JFileChooser" para seleccionar una imagen. Se filtrar archivos con extensiones jpeg y png y permite conviertir la imagen seleccionada en un objeto binario. Mostrandola en la pestaña de prioridad.
+
 Tambien se puede agregar nuevos datos como:
 El botón "InsertarB" confirma que todos los campos de texto están completos  y que se conecte a la base de datos MongoDB. Se recibe una colección de "Tareas". Donde se puede incluir datos del usuario en el objeto "Tarea" y  verificar si hay una tarea con el mismo ID o un desarrollador asignado a una tarea diferente. Si la verificación tiene éxito, el nuevo archivo se coloca en la colección de tareas. Caso contrario procede a mostrar un mensaje que indica que los datos se cargaron correctamente, la tarea se completó o el desarrollador está ocupado.
 
@@ -43,6 +44,7 @@ El botón "InsertarB" confirma que todos los campos de texto están completos  y
 El botón "Volver" tiene un "ActionListener" que se inicia cuando se hace clic en él.
 Crear nueva ventana: cree una nueva instancia de "JFrame". Nueva configuración de ventana:
 El contenido de la ventana se establece en la barra de menú principal. La imagen se establece como icono de ventana. El nombre de la ventana está configurado en "Entrar". Configure el programa para que se cierre cuando se cierre la ventana. El tamaño de la ventana gráfica es de 600 x 300 píxeles. Se abre una ventana. Cerrar la ventana actual: Cerrar la ventana que contiene el botón "Atrás".
+
 Dependencias:
 Java Swing es una herramienta para crear y gestionar interfaces gráficas de usuario. La utilidad java.awt.Toolkit se utiliza para cargar imágenes de iconos.
 
